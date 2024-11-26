@@ -1,0 +1,19 @@
+{
+  "name": "projetexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body": "^5.1.0",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1",
+    "parser": "^0.1.4",
+    "yup": "^1.4.0"
+  }
+}
