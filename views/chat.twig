@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script src ="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Bonjour Arij!!</h1>
+    <label>Message : </label>
+    <input  type="text" id="msg" onkeyup="typing()"></input>
+    <input type="submit" onclick="send()"></input>
+
+</body>
+<script>
+const socket = io.connect()
+name = prompt("username")
+
+socket.on("msg", (data)=>{
+    p= document.createElement("p")
+    p.innerText = data
+    document.body.append(p)
+    })
+
+socket.on("msgname", (data)=>{
+  p= document.createElement("p")
+   // p.innerText = ` ${data} : ${name}`;
+     p.innerText =(data.name + ":" + data.msg)
+
+    document.body.append(p)
+    })
+      x = document.getElementById("msg")
+
+    function send(){
+       // socket.emit("msgname",x.value)
+        socket.emit("msgname",{name:name,msg:x.value})
+
+    }
+
+
+    socket.on("typing", (data)=>{
+  p= document.createElement("p")
+   // p.innerText = ` ${data} : ${name}`;
+     p.innerText =(data.name+"\t "+data.msg)
+
+    document.body.append(p)
+    })
+    function typing(){
+        socket.emit("typing",{name:name,msg:"is typing..."})
+    }
+
+
+</script>
+</html>

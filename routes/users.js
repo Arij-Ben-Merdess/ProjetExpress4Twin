@@ -27,4 +27,7 @@ router.put("/update/:id",userController.update);
 //Delete 
 router.delete("/delete/:id",userController.deleteUsers);
 
+router.get("/chat",(req,res)=>{res.render("chat")});
+
+
 module.exports=router;
